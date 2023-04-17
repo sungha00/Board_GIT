@@ -34,7 +34,7 @@ public class MessageDAO {
 	}
 
 
-	public int insert(String writer, String message) throws Exception {
+	public int insertMessage(String writer, String message) throws Exception {
 		String sql = "insert into message values(message_seq.nextval,?,?)";
 		try (Connection con = this.getConnection();
 				PreparedStatement stmt = con.prepareStatement(sql);) {
@@ -46,7 +46,7 @@ public class MessageDAO {
 		}
 	}
 
-	public List<MessageDTO> selectAll() throws Exception {
+	public List<MessageDTO> selectMessage() throws Exception {
 		String sql = "select * from message order by 1";
 		try (Connection con = this.getConnection();
 				PreparedStatement stmt = con.prepareStatement(sql);
@@ -63,7 +63,7 @@ public class MessageDAO {
 		}
 	}
 
-	public int deleteById(int delID) throws Exception {
+	public int deleteMessage(int delID) throws Exception {
 		String sql = "delete from message where id=?";
 
 		try (Connection con = this.getConnection();
@@ -75,7 +75,7 @@ public class MessageDAO {
 		}
 	}
 
-	public int update(int id, String writer, String message) throws Exception{
+	public int updateMessage(int id, String writer, String message) throws Exception{
 		String sql = "update message set writer = ?, messages = ? where id = ?";
 
 		try(Connection con = this.getConnection();

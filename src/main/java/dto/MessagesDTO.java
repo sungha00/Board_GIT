@@ -13,6 +13,7 @@ public class MessagesDTO {
 		this.message = message;
 	}
 
+	
 	public int getId() {
 		return id;
 	}

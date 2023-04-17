@@ -29,8 +29,6 @@ public class MessageDAO {
 		Context iCtx = new InitialContext(); 
 		DataSource ds=(DataSource)iCtx.lookup("java:/comp/env/jdbc/ora");
 		return ds.getConnection();
-
-
 	}
 
 
@@ -87,5 +85,5 @@ public class MessageDAO {
 			con.commit();
 			return result;
 		}
-}
+	}
 }

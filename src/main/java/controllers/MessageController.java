@@ -29,11 +29,10 @@ public class MessageController extends HttpServlet {
 				if(result>0) {
 					response.sendRedirect("/index.jsp");
 				}
-
-			// 2. 메세지 출력
-			if(cmd.equals("/select.message")){
+				// 2. 메세지 출력
+			}else if(cmd.equals("/select.message")) {
 				List<MessageDTO> result = dao.selectMessage();
-        
+
 				// 출력 완료
 				request.setAttribute("list", result);
 				request.getRequestDispatcher("/list.jsp");

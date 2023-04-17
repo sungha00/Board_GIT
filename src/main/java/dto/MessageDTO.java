@@ -1,18 +1,19 @@
 package dto;
 
-public class MessagesDTO {
+public class MessageDTO {
 	private int id;
 	private String writer;
 	private String message;
 	
-	public MessagesDTO() {};
-	public MessagesDTO(int id, String writer, String message) {
+	public MessageDTO() {};
+	public MessageDTO(int id, String writer, String message) {
 		super();
 		this.id = id;
 		this.writer = writer;
 		this.message = message;
 	}
 
+	
 	public int getId() {
 		return id;
 	}

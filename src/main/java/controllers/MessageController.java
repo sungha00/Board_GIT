@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.MessagesDTO;
+import dto.MessageDTO;
 
 @WebServlet("/MessageController")
 public class MessageController extends HttpServlet {
@@ -24,7 +24,7 @@ public class MessageController extends HttpServlet {
 				String writer = request.getParameter("");
 				String message = request.getParameter("");
 
-				MessagesDTO dto = new MessagesDTO(id, writer, message);
+				MessageDTO dto = new MessageDTO(id, writer, message);
 				int result = dao.insertMessage(dto);
 				
 				// 등록완료 => 별도의 등록 결과창 제작 요망 
@@ -33,7 +33,7 @@ public class MessageController extends HttpServlet {
 
 			// 2. 메세지 출력
 			if(cmd.equals("/select.message")){
-				List<MessagesDTO> result = dao.selectMessage();
+				List<MessageDTO> result = dao.selectMessage();
 				
 				// 출력 완료
 				request.setAttribute("list", result);

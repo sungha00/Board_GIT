@@ -17,40 +17,48 @@ public class MessageController extends HttpServlet {
 		String cmd = request.getRequestURI();
 		MessagesDAO dao = new MessagesDAO();
 
-		// 1. 메세지 입력
 		try {
+			// 1. 메세지 입력
 			if(cmd.equals("/insert.message")) {
 				int id = Integer.parseInt(request.getParameter(""));
 				String writer = request.getParameter("");
 				String message = request.getParameter("");
 
-				int result = dao.insertMessage();
+				MessagesDTO dto = new MessagesDTO(id, writer, message);
+				int result = dao.insertMessage(dto);
 				
+				// 등록완료 => 별도의 등록 결과창 제작 요망 
+				response.sendRedirect("/index.jsp");
 			}
-
 
 			// 2. 메세지 출력
 			if(cmd.equals("/select.message")){
-				
 				List<MessagesDTO> result = dao.selectMessage();
+				
+				// 출력 완료
 				request.setAttribute("list", result);
 				request.getRequestDispatcher("/list.jsp");
-
-
-
-
-				// 3. 메세지 삭제
+				
+			// 3. 메세지 삭제
 			}else if(cmd.equals("/delete.message")) {
-
-
-
-
-				dao.deleteMessage();
+				String deleteId = request.getParameter("deleteId");
+				int result = dao.deleteMessage(deleteId);
+				
+				// 삭제 완료 => 별도의 삭제 결과창 제작 요망
+				response.sendRedirect("/list.jsp");
+				
 				// 4. 메세지 수정
 			}else if(cmd.equals("/update.message")) {
-
-
-				dao.updateMessage();
+				String modifyId = request.getParameter("modifyId");
+				String modifyWriter = request.getParameter("modifyWriter");
+				String modifyMessage = request.getParameter("modifyMessage");
+				
+				// DAO의 메세지 수정 메소드 확인
+				// 메소드 하나로 구현 어려울 시, 검색 메소드와 수정 메소드 구분 사용가능
+				dao.updateMessage(modifyId,modifyWriter,modifyMessage);
+				
+				// 수정 완료 => 별도의 수정 결과창 제작 요망
+				response.sendRedirect("/list.jsp");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

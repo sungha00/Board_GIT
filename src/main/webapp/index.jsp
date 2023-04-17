@@ -14,8 +14,8 @@
 			<th colspan=2>index</th>
 		</tr>
 		<tr>
-			<td><a href="inputForm.jsp">toInput</a></td>
-			<td><a href="select.message">toOutput</a></td>
+			<td><a href="/inputForm.jsp">toInput</a></td>
+			<td><a href="/select.message">toOutput</a></td>
 		</tr>
 	</table>
 </body>

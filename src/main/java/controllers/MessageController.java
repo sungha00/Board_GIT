@@ -53,6 +53,8 @@ public class MessageController extends HttpServlet {
 				String modifyWriter = request.getParameter("modifyWriter");
 				String modifyMessage = request.getParameter("modifyMessage");
 				
+				// DAO의 메세지 수정 메소드 확인
+				// 메소드 하나로 구현 어려울 시, 검색 메소드와 수정 메소드 구분 사용가능
 				dao.updateMessage(modifyId,modifyWriter,modifyMessage);
 				
 				// 수정 완료 => 별도의 수정 결과창 제작 요망

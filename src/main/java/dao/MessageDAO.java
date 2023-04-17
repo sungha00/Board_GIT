@@ -53,7 +53,7 @@ public class MessageDAO {
 			while (rs.next()) {
 				int id = rs.getInt("id");
 				String writer = rs.getString("writer");
-				String message = rs.getString("messages");
+				String message = rs.getString("message");
 				MessageDTO dto = new MessageDTO(id, writer, message);
 				result.add(dto);
 			}

@@ -21,8 +21,8 @@ public class MessageController extends HttpServlet {
 		try {
 			// 1. 메세지 입력
 			if(cmd.equals("/insert.message")) {
-				String writer = request.getParameter("");
-				String message = request.getParameter("");
+				String writer = request.getParameter("writer");
+				String message = request.getParameter("message");
 
 				int result = dao.insertMessage(writer,message);
 
